@@ -1,0 +1,15 @@
+{
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "build",
+  "installCommand": "npm install",
+  "framework": "react",
+  "env": {
+    "REACT_APP_API_URL": "@REACT_APP_API_URL"
+  },
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://your-backend-url.onrender.com/api/:path*"
+    }
+  ]
+}
