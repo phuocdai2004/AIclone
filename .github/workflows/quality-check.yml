@@ -1,0 +1,48 @@
+name: Code Quality Check
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Check Python code quality
+        working-directory: ./backend
+        run: |
+          pip install flake8 black isort
+          echo "Checking Python format..."
+          black --check . || true
+          echo "Checking import order..."
+          isort --check-only . || true
+      
+      - name: Check Node code quality
+        working-directory: ./frontend
+        run: |
+          npm ci
+          echo "Checking JavaScript format..."
+          npm run lint || true
+      
+      - name: Security check
+        run: |
+          pip install bandit safety
+          echo "Backend security check..."
+          bandit -r backend/ || true
+          echo "Frontend dependencies check..."
+          npm audit --prefix frontend || true
