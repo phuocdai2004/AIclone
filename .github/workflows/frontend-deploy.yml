@@ -61,7 +61,7 @@ jobs:
             })
       
       - name: Notify Slack (Optional)
-        if: always()
+        if: failure()
         uses: slackapi/slack-github-action@v1
         with:
           webhook-url: ${{ secrets.SLACK_WEBHOOK }}
@@ -78,4 +78,3 @@ jobs:
                 }
               ]
             }
-        if: failure()
