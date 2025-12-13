@@ -1,8 +1,6 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "CI=false npm run build",
   "outputDirectory": "build",
-  "installCommand": "npm install",
-  "framework": "create-react-app",
   "env": {
     "REACT_APP_API_URL": "https://aiclone-backend.onrender.com"
   }
