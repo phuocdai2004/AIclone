@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Chat from './Chat';
+import API_URL from './config';
 
 // AI Voice Chat Component - Inline
 const AIVoiceChat = () => {
@@ -207,7 +208,7 @@ const AIVoiceChat = () => {
     setTranscript('');
     
     try {
-      const res = await axios.post('http://localhost:8000/api/ai/chat', {
+      const res = await axios.post(`${API_URL}/api/ai/chat`, {
         message: text
       });
       
@@ -789,7 +790,6 @@ const UserHome = ({ user, role, onLogout }) => {
   const [loading, setLoading] = useState(false);
   const [personalClones, setPersonalClones] = useState([]);
 
-  const API_URL = 'http://localhost:8000';
   const token = localStorage.getItem('token');
 
   useEffect(() => {

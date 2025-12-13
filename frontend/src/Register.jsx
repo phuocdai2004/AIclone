@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import FloatingCharacter from './FloatingCharacter';
+import API_URL from './config';
 
 const Register = ({ onRegisterSuccess, onBackToLogin }) => {
   const [formData, setFormData] = useState({
@@ -67,7 +68,7 @@ const Register = ({ onRegisterSuccess, onBackToLogin }) => {
 
     try {
       // Use new public registration endpoint
-      const response = await axios.post('http://localhost:8000/api/auth/register', {
+      const response = await axios.post(`${API_URL}/api/auth/register`, {
         username: formData.username,
         email: formData.email,
         password: formData.password

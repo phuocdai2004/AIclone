@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import FloatingCharacter from './FloatingCharacter';
+import API_URL from './config';
 
 const Login = ({ onLogin, onSwitchToRegister, onSwitchToForgotPassword }) => {
   const [username, setUsername] = useState('');
@@ -15,7 +16,7 @@ const Login = ({ onLogin, onSwitchToRegister, onSwitchToForgotPassword }) => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/login', {
+      const response = await axios.post(`${API_URL}/api/auth/login`, {
         username,
         password
       });
