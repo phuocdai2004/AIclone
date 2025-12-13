@@ -1,15 +1,9 @@
 {
-  "buildCommand": "npm install && npm run build",
+  "buildCommand": "npm run build",
   "outputDirectory": "build",
   "installCommand": "npm install",
-  "framework": "react",
+  "framework": "create-react-app",
   "env": {
-    "REACT_APP_API_URL": "@REACT_APP_API_URL"
-  },
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://your-backend-url.onrender.com/api/:path*"
-    }
-  ]
+    "REACT_APP_API_URL": "https://aiclone-backend.onrender.com"
+  }
 }
