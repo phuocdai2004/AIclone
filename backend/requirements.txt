@@ -9,8 +9,12 @@ PyPDF2
 python-docx
 sqlalchemy
 pymysql
+pymongo
 pydantic
 cryptography
 PyJWT
 passlib
 bcrypt
+python-multipart
+email-validator
+cors
