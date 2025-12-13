@@ -1,0 +1,281 @@
+/* Character Mascot Styling */
+
+.character-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.character {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transform-origin: center bottom;
+  transition: transform 0.1s ease-out;
+}
+
+/* SVG animations */
+@keyframes characterRunRight {
+  0% {
+    transform: translateX(-120vw);
+  }
+  100% {
+    transform: translateX(120vw);
+  }
+}
+
+@keyframes characterRunLeft {
+  0% {
+    transform: translateX(120vw) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-120vw) scaleX(-1);
+  }
+}
+
+/* Stick rotation animation */
+@keyframes stickSwing {
+  0%, 100% {
+    transform: rotate(0deg);
+    transform-origin: 32px 32px;
+  }
+  25% {
+    transform: rotate(-15deg);
+    transform-origin: 32px 32px;
+  }
+  50% {
+    transform: rotate(0deg);
+    transform-origin: 32px 32px;
+  }
+  75% {
+    transform: rotate(10deg);
+    transform-origin: 32px 32px;
+  }
+}
+
+.character.character-run-right {
+  animation: characterRunRight 1.2s ease-in-out forwards;
+}
+
+.character.character-run-left {
+  animation: characterRunLeft 1.2s ease-in-out forwards;
+}
+
+.stick {
+  animation: stickSwing 0.6s ease-in-out infinite;
+  transform-origin: 32px 32px;
+}
+
+/* Jumping animation for legs */
+@keyframes legKick {
+  0%, 100% {
+    transform: translateY(0) rotateZ(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotateZ(-15deg);
+  }
+  75% {
+    transform: translateY(-8px) rotateZ(15deg);
+  }
+}
+
+line[x1="45"] {
+  animation: legKick 0.8s ease-in-out infinite;
+  transform-origin: 45px 57px;
+}
+
+line[x1="55"] {
+  animation: legKick 0.8s ease-in-out infinite 0.4s;
+  transform-origin: 55px 57px;
+}
+
+/* Head tilt animation */
+@keyframes headTilt {
+  0%, 100% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(-5deg);
+  }
+  75% {
+    transform: rotateZ(5deg);
+  }
+}
+
+circle[cx="50"] {
+  animation: headTilt 0.6s ease-in-out infinite;
+  transform-origin: 50px 25px;
+}
+
+/* Motion lines animation */
+.motion-lines {
+  animation: motionPulse 0.6s ease-in-out infinite;
+}
+
+@keyframes motionPulse {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Character shadow */
+.character-shadow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 6px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3), transparent);
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* Dust particles */
+.dust-particle {
+  position: absolute;
+  bottom: 20px;
+  width: 6px;
+  height: 6px;
+  background: #FFD93D;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(1px);
+}
+
+.dust-1 {
+  right: -20px;
+  animation: dustFall 0.8s ease-out infinite;
+}
+
+.dust-2 {
+  right: -15px;
+  animation: dustFall 1s ease-out 0.2s infinite;
+}
+
+.dust-3 {
+  right: -10px;
+  animation: dustFall 0.9s ease-out 0.4s infinite;
+}
+
+@keyframes dustFall {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(40px) translateX(-30px);
+  }
+}
+
+/* Running state - more active */
+.character-container.character-run-right .dust-particle,
+.character-container.character-run-left .dust-particle {
+  animation: dustFall 0.6s ease-out infinite !important;
+}
+
+/* Idle state */
+@keyframes characterBreathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.character.character-idle {
+  animation: characterBreathe 2s ease-in-out infinite;
+}
+
+/* Celebrate animation */
+@keyframes characterCelebrate {
+  0% {
+    transform: rotateZ(0deg) scale(1);
+  }
+  25% {
+    transform: rotateZ(-10deg) scale(1.1);
+  }
+  50% {
+    transform: rotateZ(10deg) scale(1.1);
+  }
+  75% {
+    transform: rotateZ(-10deg) scale(1.1);
+  }
+  100% {
+    transform: rotateZ(0deg) scale(1);
+  }
+}
+
+.character.character-celebrate {
+  animation: characterCelebrate 0.8s ease-in-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .character-container {
+    bottom: 15px;
+  }
+
+  .character {
+    width: 80px;
+    height: 100px;
+  }
+
+  @keyframes characterRunRight {
+    0% {
+      transform: translateX(-100vw);
+    }
+    100% {
+      transform: translateX(100vw);
+    }
+  }
+
+  @keyframes characterRunLeft {
+    0% {
+      transform: translateX(100vw) scaleX(-1);
+    }
+    100% {
+      transform: translateX(-100vw) scaleX(-1);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .character {
+    width: 60px;
+    height: 80px;
+  }
+
+  .character-shadow {
+    width: 60px;
+  }
+}
+
+/* Loading state */
+.character.character-loading {
+  animation: characterBreathe 1.5s ease-in-out infinite;
+}
+
+/* Bounce animation for successful actions */
+@keyframes characterBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-15px);
+  }
+  75% {
+    transform: translateY(-15px);
+  }
+}
+
+.character.character-bounce {
+  animation: characterBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}

@@ -1,0 +1,409 @@
+/* ============================================
+   CHARACTER PLAYING GAME - NATURAL MOVEMENTS
+   ============================================ */
+
+.character-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Wrapper để nhân vật và đám mây chuyển động cùng nhau */
+.character-wrapper {
+  position: absolute;
+  animation: gamePlay 6s ease-in-out infinite;
+}
+
+/* Thought Cloud - gắn với nhân vật */
+.thought-cloud {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 90px;
+  pointer-events: none;
+  transition: width 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cloud-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+}
+
+.cloud-shape {
+  animation: cloudPulse 3s ease-in-out infinite;
+}
+
+@keyframes cloudPulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.thought-text {
+  position: relative;
+  z-index: 10;
+  width: 92%;
+  max-width: 300px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #2c3e50;
+  line-height: 1.3;
+  animation: textFade 3s ease-in-out infinite;
+  font-family: 'Arial', sans-serif;
+  padding: 20px 12px 10px 12px;
+  box-sizing: border-box;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 70px;
+  text-overflow: ellipsis;
+  margin-top: 14px;
+}
+
+/* 2 chấm nhỏ nối từ mây xuống nhân vật */
+.cloud-dots {
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  bottom: -80px;
+  left: 0;
+  pointer-events: none;
+}
+
+.dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: dotFloat 3s ease-in-out infinite;
+}
+
+.dot-left {
+  left: 48%;
+  top: 0;
+  bottom: auto;
+  animation-delay: 0s;
+}
+
+.dot-right {
+  left: 48%;
+  top: 15px;
+  bottom: auto;
+  animation-delay: 0.1s;
+}
+
+@keyframes dotFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  10% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes textFade {
+  0% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.character {
+  position: absolute;
+  width: 45px;
+  height: 60px;
+  top: 0;
+  left: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Character plays game - jumping, moving, reacting */
+@keyframes gamePlay {
+  0% {
+    top: -65px;
+    left: 15px;
+  }
+  /* Jump and react - excited */
+  15% {
+    top: -75px;
+    left: 25%;
+  }
+  20% {
+    top: -65px;
+    left: 30%;
+  }
+  /* Move around */
+  35% {
+    top: -70px;
+    left: 50%;
+  }
+  /* Jump again */
+  50% {
+    top: -80px;
+    left: 60%;
+  }
+  65% {
+    top: -65px;
+    left: 70%;
+  }
+  /* Moving back */
+  80% {
+    top: -70px;
+    left: 40%;
+  }
+  /* Return */
+  100% {
+    top: -65px;
+    left: 15px;
+  }
+}
+
+/* Head - looking around, tilting */
+.head {
+  animation: headLook 2s ease-in-out infinite;
+  transform-origin: 30px 15px;
+}
+
+@keyframes headLook {
+  0% {
+    transform: rotateZ(0deg) rotateX(0deg);
+  }
+  25% {
+    transform: rotateZ(-5deg) rotateX(5deg);
+  }
+  50% {
+    transform: rotateZ(5deg) rotateX(-5deg);
+  }
+  75% {
+    transform: rotateZ(-3deg) rotateX(3deg);
+  }
+  100% {
+    transform: rotateZ(0deg) rotateX(0deg);
+  }
+}
+
+/* Eyes - blinking and looking */
+.eye-left,
+.eye-right {
+  animation: blink 3s ease-in-out infinite;
+}
+
+.eye-left {
+  animation-delay: 0s;
+}
+
+.eye-right {
+  animation-delay: 0.05s;
+}
+
+@keyframes blink {
+  0%, 10%, 12%, 100% {
+    r: 2;
+  }
+  11% {
+    r: 0.3;
+  }
+  /* Looking around */
+  30% {
+    cx: 25;
+  }
+  40% {
+    cx: 26;
+  }
+  60% {
+    cx: 35;
+  }
+  70% {
+    cx: 34;
+  }
+  80% {
+    cx: 26;
+  }
+}
+
+/* Mouth - expressing emotion */
+.mouth {
+  animation: mouthExpress 3s ease-in-out infinite;
+}
+
+@keyframes mouthExpress {
+  0%, 10%, 35%, 65%, 90%, 100% {
+    /* Normal smile */
+    stroke: #000;
+    opacity: 1;
+  }
+  20%, 50%, 80% {
+    /* Big smile - excited */
+    stroke: #ff6b00;
+    opacity: 1;
+  }
+}
+
+/* Body - bouncing while gaming */
+.body {
+  animation: bodyBounce 0.6s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes bodyBounce {
+  0%, 100% {
+    transform: translateY(0px) scaleY(1);
+  }
+  50% {
+    transform: translateY(-3px) scaleY(1.05);
+  }
+}
+
+/* Left Arm - reaching, swinging, gesturing */
+.arm-left {
+  animation: armLeftSwing 1.5s ease-in-out infinite;
+  transform-origin: 20px 30px;
+}
+
+@keyframes armLeftSwing {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  /* Reaching up */
+  20% {
+    transform: rotateZ(-60deg);
+  }
+  /* Swinging down */
+  40% {
+    transform: rotateZ(30deg);
+  }
+  /* Relaxed */
+  60% {
+    transform: rotateZ(0deg);
+  }
+  /* Excited gesture */
+  80% {
+    transform: rotateZ(-45deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+/* Right Arm - reaching, swinging, gesturing */
+.arm-right {
+  animation: armRightSwing 1.5s ease-in-out infinite;
+  transform-origin: 40px 30px;
+}
+
+@keyframes armRightSwing {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  /* Reaching up */
+  20% {
+    transform: rotateZ(60deg);
+  }
+  /* Swinging down */
+  40% {
+    transform: rotateZ(-30deg);
+  }
+  /* Relaxed */
+  60% {
+    transform: rotateZ(0deg);
+  }
+  /* Excited gesture */
+  80% {
+    transform: rotateZ(45deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+/* Left Leg - running, kicking */
+.leg-left {
+  animation: legLeftRun 0.5s ease-in-out infinite;
+  transform-origin: 26px 45px;
+}
+
+@keyframes legLeftRun {
+  0%, 100% {
+    transform: rotateZ(-10deg);
+  }
+  25% {
+    transform: rotateZ(20deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  75% {
+    transform: rotateZ(-25deg);
+  }
+}
+
+/* Right Leg - running, kicking */
+.leg-right {
+  animation: legRightRun 0.5s ease-in-out infinite;
+  transform-origin: 34px 45px;
+}
+
+@keyframes legRightRun {
+  0%, 100% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-20deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  75% {
+    transform: rotateZ(25deg);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .character {
+    width: 35px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .character {
+    width: 30px;
+    height: 45px;
+  }
+}

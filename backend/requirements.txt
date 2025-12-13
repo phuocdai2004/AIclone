@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+python-dotenv
+requests
+google-generativeai
+groq
+aiosqlite
+PyPDF2
+python-docx
+sqlalchemy
+pymysql
+pydantic
+cryptography
+PyJWT
+passlib
+bcrypt

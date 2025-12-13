@@ -1,0 +1,38 @@
+{
+  "vietnam_info": {
+    "capital": "Hà Nội",
+    "largest_city": "TP. Hồ Chí Minh",
+    "population": "~98 triệu",
+    "currency": "Đồng Việt Nam (VND)",
+    "language": "Tiếng Việt",
+    "area": "331,210 km²",
+    "founded": "879",
+    "independence": "1945"
+  },
+  "vietnam_provinces": [
+    "Hà Nội", "TP. Hồ Chí Minh", "Đà Nẵng", "Hải Phòng",
+    "Cần Thơ", "Thừa Thiên-Huế", "Quy Nhơn", "Vũng Tàu"
+  ],
+  "famous_places": {
+    "hanoi": "Thủ đô, có Hàng Mã, Hoàn Kiếm",
+    "ho_chi_minh": "Thành phố lớn nhất, kinh tế nhất",
+    "halong_bay": "Di sản UNESCO, du lịch",
+    "mekong_delta": "Đất phì nhiêu, nông nghiệp",
+    "sapa": "Du lịch núi, quanh năm mát mẻ"
+  },
+  "culture": {
+    "new_year": "Tết Nguyên Đán - Tết",
+    "traditional_dress": "Áo dài",
+    "cuisine": "Phở, bánh mì, cơm tấm",
+    "martial_arts": "Vovinam",
+    "festivals": "Tết, Trung Thu, Quốc Khánh"
+  },
+  "faq": {
+    "q1": "Việt Nam ở đâu?",
+    "a1": "Việt Nam ở Đông Nam Á, giáp biển Đông, biên giới với Trung Quốc, Lào, Campuchia",
+    "q2": "Tiếng Việt có bao nhiêu chữ cái?",
+    "a2": "Tiếng Việt có 29 chữ cái (A-Z + Đ)",
+    "q3": "Tết ở Việt Nam khi nào?",
+    "a3": "Tết Nguyên Đán là ngày đầu tiên của năm âm lịch, thường vào tháng 1-2 dương lịch"
+  }
+}
