@@ -74,16 +74,7 @@ class Users:
             "role": "superadmin",
             "email": "superadmin@aiclone.local"
         },
-        "user1": {
-            "password": "user123",
-            "role": "user",
-            "email": "user1@aiclone.local"
-        },
-        "user2": {
-            "password": "user123",
-            "role": "user",
-            "email": "user2@aiclone.local"
-        }
+       
     }
 
     @staticmethod

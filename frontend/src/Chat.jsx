@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FiSend, FiTrash2, FiSettings, FiUpload, FiChevronUp, FiFile, FiMapPin, FiPlay, FiMic, FiType, FiSmile, FiThumbsUp, FiDownload, FiSearch, FiCopy, FiEdit2, FiRefreshCw } from 'react-icons/fi';
 import './App.css';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'https://aiclone-backend.onrender.com';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
