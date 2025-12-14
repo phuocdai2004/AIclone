@@ -195,7 +195,8 @@ async def forgot_password(request: ForgotPasswordRequest):
         )
         
         # Send reset email
-        reset_link = f"http://localhost:3000/reset-password?token={reset_token}"
+        frontend_url = os.getenv("FRONTEND_URL", "https://a-iclone-frontend.vercel.app")
+        reset_link = f"{frontend_url}/reset-password?token={reset_token}"
         email_service.send_password_reset(
             user_email=user["email"],
             username=user["username"],
