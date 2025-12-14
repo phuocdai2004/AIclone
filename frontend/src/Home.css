@@ -400,3 +400,96 @@
   }
 }
 
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .home-container::before {
+    width: 250px;
+    height: 250px;
+    top: -80px;
+    left: -80px;
+  }
+
+  .home-container::after {
+    width: 200px;
+    height: 200px;
+    bottom: -40px;
+    right: -40px;
+  }
+
+  .home-content {
+    padding: 20px 15px;
+  }
+
+  .home-content h1 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+  }
+
+  .home-content p {
+    font-size: 0.9rem;
+    margin: 10px 0;
+  }
+
+  .mode-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .mode-btn {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+
+  .mode-card {
+    width: 90%;
+    min-height: 200px;
+  }
+
+  .mode-card h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container::before {
+    width: 150px;
+    height: 150px;
+    top: -60px;
+    left: -60px;
+  }
+
+  .home-container::after {
+    width: 120px;
+    height: 120px;
+  }
+
+  .home-content h1 {
+    font-size: 1.3rem;
+  }
+
+  .home-content p {
+    font-size: 0.75rem;
+  }
+
+  .mode-btn {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+
+  .mode-card {
+    width: 100%;
+    min-height: 150px;
+  }
+
+  .mode-card h2 {
+    font-size: 1rem;
+  }
+
+  .clone-card::after {
+    font-size: 4rem;
+    right: -25px;
+  }
+}
+
