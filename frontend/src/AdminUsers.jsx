@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_URL from './config';
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
@@ -24,7 +25,7 @@ const AdminUsers = () => {
   const loadUsers = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8000/api/users/', {
+      const response = await axios.get(`${API_URL}/api/users/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setUsers(response.data);
@@ -43,13 +44,13 @@ const AdminUsers = () => {
     try {
       if (editingId) {
         // Update user
-        await axios.put(`http://localhost:8000/api/users/${editingId}`, form, {
+        await axios.put(`${API_URL}/api/users/${editingId}`, form, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         setSuccess('User updated successfully');
       } else {
         // Create new user
-        await axios.post('http://localhost:8000/api/users/register', form, {
+        await axios.post(`${API_URL}/api/users/register`, form, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         setSuccess('User created successfully');
@@ -79,7 +80,7 @@ const AdminUsers = () => {
     if (!window.confirm('Delete this user?')) return;
 
     try {
-      await axios.delete(`http://localhost:8000/api/users/${userId}`, {
+      await axios.delete(`${API_URL}/api/users/${userId}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setSuccess('User deleted successfully');
@@ -91,7 +92,7 @@ const AdminUsers = () => {
 
   const handleChangeRole = async (userId, newRole) => {
     try {
-      await axios.put(`http://localhost:8000/api/users/${userId}/role?role=${newRole}`, {}, {
+      await axios.put(`${API_URL}/api/users/${userId}/role?role=${newRole}`, {}, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setSuccess('Role updated successfully');

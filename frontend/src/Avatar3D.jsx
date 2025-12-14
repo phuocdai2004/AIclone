@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import axios from 'axios';
+import API_URL from './config';
 
 const Avatar3D = () => {
   const mountRef = useRef(null);
@@ -559,7 +560,7 @@ const Avatar3D = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/api/chat', { text: msg });
+      const response = await axios.post(`${API_URL}/api/chat`, { text: msg });
       const aiResponse = response.data.ai_response;
 
       setChatHistory(prev => [...prev, { role: 'ai', content: aiResponse }]);

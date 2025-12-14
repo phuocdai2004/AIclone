@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import axios from 'axios';
+import API_URL from './config';
 
 const HumanClone = () => {
   // Core states
@@ -113,7 +114,7 @@ const HumanClone = () => {
 
     try {
       // Save to MySQL via API
-      const response = await axios.post('http://localhost:8000/api/clones/create', newCloneData);
+      const response = await axios.post(`${API_URL}/api/clones/create`, newCloneData);
       console.log('Clone saved to MySQL:', response.data);
       setCloneData({ ...newCloneData, id: response.data.id });
     } catch (e) {
@@ -696,7 +697,7 @@ Người dùng: ${userMsg}
 ${cloneData.name}:`;
 
     try {
-      const response = await axios.post('http://localhost:8000/api/chat', {
+      const response = await axios.post(`${API_URL}/api/chat`, {
         text: clonePrompt,
       });
 

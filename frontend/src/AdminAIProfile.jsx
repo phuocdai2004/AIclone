@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SuperAdminDashboard.css';
+import API_URL from './config';
 
 const AdminAIProfile = () => {
   const [profile, setProfile] = useState({
@@ -26,7 +27,7 @@ const AdminAIProfile = () => {
   const loadProfile = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:8000/api/ai-profile', {
+      const res = await axios.get(`${API_URL}/api/ai-profile`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setProfile(res.data);
@@ -49,7 +50,7 @@ const AdminAIProfile = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:8000/api/ai-profile', formData, {
+      await axios.put(`${API_URL}/api/ai-profile`, formData, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setProfile(formData);
@@ -88,7 +89,7 @@ const AdminAIProfile = () => {
       const formDataToSend = new FormData();
       formDataToSend.append('file', file);
 
-      const response = await axios.post('http://localhost:8000/api/upload/image', formDataToSend, {
+      const response = await axios.post(`${API_URL}/api/upload/image`, formDataToSend, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 

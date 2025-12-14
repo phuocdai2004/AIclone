@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './ForgotPassword.css';
 import FloatingCharacter from './FloatingCharacter';
+import API_URL from './config';
 
 const ForgotPassword = ({ onBackToLogin }) => {
   const [email, setEmail] = useState('');
@@ -27,7 +28,7 @@ const ForgotPassword = ({ onBackToLogin }) => {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:8000/api/auth/forgot-password', {
+      await axios.post(`${API_URL}/api/auth/forgot-password`, {
         email: email.trim()
       });
 

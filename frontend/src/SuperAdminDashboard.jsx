@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SuperAdminDashboard.css';
 import AdminAIProfile from './AdminAIProfile';
+import API_URL from './config';
 
 const SuperAdminDashboard = ({ user, onLogout, onSelectMode }) => {
   const [activeTab, setActiveTab] = useState('analytics');
@@ -36,17 +37,17 @@ const SuperAdminDashboard = ({ user, onLogout, onSelectMode }) => {
       const token = localStorage.getItem('token');
       
       // Load users
-      const usersRes = await axios.get('http://localhost:8000/api/users/', {
+      const usersRes = await axios.get(`${API_URL}/api/users/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setUsers(usersRes.data);
 
       // Load clones
-      const clonesRes = await axios.get('http://localhost:8000/api/clones/');
+      const clonesRes = await axios.get(`${API_URL}/api/clones/`);
       setClones(clonesRes.data);
 
       // Load all queries
-      const queriesRes = await axios.get('http://localhost:8000/api/admin/all-queries');
+      const queriesRes = await axios.get(`${API_URL}/api/admin/all-queries`);
       setAllQueries(queriesRes.data.queries || []);
 
       // Calculate stats
@@ -66,7 +67,7 @@ const SuperAdminDashboard = ({ user, onLogout, onSelectMode }) => {
 
   const loadUserQueries = async (username) => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/admin/user-queries/${username}`);
+      const res = await axios.get(`${API_URL}/api/admin/user-queries/${username}`);
       setUserQueries(res.data.queries || []);
       setSelectedUser(username);
     } catch (err) {
@@ -98,14 +99,14 @@ const SuperAdminDashboard = ({ user, onLogout, onSelectMode }) => {
       if (editingUser) {
         // Update existing user
         await axios.put(
-          `http://localhost:8000/api/users/${editingUser.id}`,
+          `${API_URL}/api/users/${editingUser.id}`,
           formData,
           { headers: { 'Authorization': `Bearer ${token}` } }
         );
       } else {
         // Create new user
         await axios.post(
-          'http://localhost:8000/api/users/register',
+          `${API_URL}/api/users/register`,
           formData,
           { headers: { 'Authorization': `Bearer ${token}` } }
         );
@@ -124,7 +125,7 @@ const SuperAdminDashboard = ({ user, onLogout, onSelectMode }) => {
     try {
       const token = localStorage.getItem('token');
       await axios.delete(
-        `http://localhost:8000/api/users/${userId}`,
+        `${API_URL}/api/users/${userId}`,
         { headers: { 'Authorization': `Bearer ${token}` } }
       );
       loadDashboardData();
@@ -137,7 +138,7 @@ const SuperAdminDashboard = ({ user, onLogout, onSelectMode }) => {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        `http://localhost:8000/api/users/${userId}/toggle-status`,
+        `${API_URL}/api/users/${userId}/toggle-status`,
         {},
         { headers: { 'Authorization': `Bearer ${token}` } }
       );

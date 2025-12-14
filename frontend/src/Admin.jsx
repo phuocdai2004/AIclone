@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AdminUsers from './AdminUsers';
+import API_URL from './config';
 
 const Admin = () => {
   const [tab, setTab] = useState('clones'); // 'clones' or 'users'
@@ -11,7 +12,6 @@ const Admin = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterEmotion, setFilterEmotion] = useState('all');
   const [sortBy, setSortBy] = useState('name');
-  const API_URL = 'http://localhost:8000';
 
   // Load clones from MySQL via API
   useEffect(() => {

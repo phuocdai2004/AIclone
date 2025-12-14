@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import API_URL from './config';
 import './AIBot.css';
 
 const AIBot = () => {
@@ -115,7 +116,7 @@ const AIBot = () => {
     
     try {
       // Gọi API để lấy response
-      const res = await axios.post('http://localhost:8000/api/ai/chat', {
+      const res = await axios.post(`${API_URL}/api/ai/chat`, {
         message: text
       });
       

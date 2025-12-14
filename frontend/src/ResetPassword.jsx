@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ResetPassword.css';
 import FloatingCharacter from './FloatingCharacter';
+import API_URL from './config';
 
 const ResetPassword = ({ onResetSuccess }) => {
   const [newPassword, setNewPassword] = useState('');
@@ -64,7 +65,7 @@ const ResetPassword = ({ onResetSuccess }) => {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:8000/api/auth/reset-password', {
+      await axios.post(`${API_URL}/api/auth/reset-password`, {
         token: token,
         new_password: newPassword
       });
